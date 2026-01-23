@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amitendu | Portfolio</title>
+    <title>Amitendu Bikash Dhusiya | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
@@ -13,6 +13,8 @@
         .flat-border:active { border-bottom-width: 0px; transform: translateY(4px); }
         .loader { border-top-color: #3498db; animation: spinner 1.5s linear infinite; }
         @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        /* Prevent horizontal overflow on tiny screens */
+        .break-word { word-wrap: break-word; word-break: break-all; }
     </style>
 </head>
 <body class="antialiased">
@@ -32,7 +34,7 @@
                 </div>
 
                 <div class="md:hidden">
-                    <button id="menu-btn" class="p-2 outline-none">
+                    <button id="menu-btn" class="p-2 outline-none focus:bg-[#34495e]">
                         <i data-lucide="menu" class="w-6 h-6 text-white"></i>
                     </button>
                 </div>
@@ -40,11 +42,11 @@
         </div>
 
         <div id="mobile-menu" class="hidden md:hidden bg-[#34495e] border-t-4 border-[#3498db]">
-            <div class="px-4 py-6 space-y-4 font-bold uppercase text-center tracking-widest">
-                <a href="#about" class="block py-2 hover:bg-[#2c3e50]">About</a>
-                <a href="#skills" class="block py-2 hover:bg-[#2c3e50]">Skills</a>
-                <a href="#projects" class="block py-2 hover:bg-[#2c3e50]">Projects</a>
-                <a href="#contact" class="block py-2 hover:bg-[#2c3e50]">Contact</a>
+            <div class="px-4 py-6 space-y-4 font-bold uppercase text-center tracking-widest text-sm">
+                <a href="#about" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">About</a>
+                <a href="#skills" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">Skills</a>
+                <a href="#projects" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">Projects</a>
+                <a href="#contact" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">Contact</a>
             </div>
         </div>
     </nav>
@@ -55,7 +57,7 @@
                 Coder. Gamer. <br class="hidden sm:block"> <span class="bg-[#2c3e50] px-3">Streamer.</span>
             </h1>
             <p class="text-lg sm:text-xl lg:text-2xl font-medium mb-10 opacity-95 max-w-2xl mx-auto">
-                Techno College Hooghly BCA Student. Crafting code and content from West Bengal, India.
+                BCA Student at Techno College Hooghly. Crafting rule-based systems and digital experiences.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#projects" class="bg-[#2c3e50] text-white px-10 py-4 font-black uppercase flat-border text-center">View Projects</a>
@@ -64,81 +66,82 @@
         </div>
     </header>
 
-    <section id="about" class="py-16 px-6 lg:py-24 max-w-7xl mx-auto">
+    <section id="about" class="py-16 px-6 lg:py-24 max-w-7xl mx-auto scroll-mt-20">
         <div class="grid lg:grid-cols-12 gap-10">
             <div class="lg:col-span-7 bg-white p-8 sm:p-12 border-4 border-[#2c3e50] flat-border">
                 <h2 class="text-3xl sm:text-4xl font-black mb-6 uppercase">The Profile</h2>
                 <p class="text-base sm:text-lg leading-relaxed mb-6">
-                    I'm <strong>Amitendu Bikash Dhusiya</strong>. My journey is a mix of high-level programming logic and creative digital storytelling. Currently diving deep into <strong>Java, Python, and Angular</strong> while building useful tools for my college community.
+                    I'm <strong>Amitendu Bikash Dhusiya</strong>, a student currently pursuing my BCA degree. My work ranges from building eCommerce APIs with Python to serverless contact forms using AWS.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-4 py-2 font-bold text-xs uppercase">BCA 3rd Year</span>
-                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-4 py-2 font-bold text-xs uppercase">Software Dev</span>
-                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-4 py-2 font-bold text-xs uppercase">Open Source</span>
+                <div class="flex flex-wrap gap-2 sm:gap-4">
+                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">BCA Final Year</span>
+                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Software Dev</span>
+                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Open Source</span>
                 </div>
             </div>
+            
             <div class="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
-    <div class="bg-[#2ecc71] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
-        <i data-lucide="terminal" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-        <span class="block font-black text-sm sm:text-xl lg:text-2xl uppercase truncate">Java</span>
-    </div>
-    <div class="bg-[#f1c40f] p-4 sm:p-6 text-[#2c3e50] text-center flat-border flex flex-col justify-center overflow-hidden">
-        <i data-lucide="play" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-        <span class="block font-black text-sm sm:text-xl lg:text-2xl uppercase truncate">Live</span>
-    </div>
-    <div class="bg-[#e74c3c] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
-        <i data-lucide="layers" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-        <span class="block font-black text-[10px] xs:text-xs sm:text-xl lg:text-2xl uppercase break-all leading-none">Fullstack</span>
-    </div>
-    <div class="bg-[#34495e] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
-        <i data-lucide="database" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-        <span class="block font-black text-sm sm:text-xl lg:text-2xl uppercase truncate">SQL</span>
-    </div>
-</div>
+                <div class="bg-[#2ecc71] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
+                    <i data-lucide="terminal" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Java</span>
+                </div>
+                <div class="bg-[#f1c40f] p-4 sm:p-6 text-[#2c3e50] text-center flat-border flex flex-col justify-center overflow-hidden">
+                    <i data-lucide="play" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Live</span>
+                </div>
+                <div class="bg-[#e74c3c] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
+                    <i data-lucide="layers" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="block font-black text-[10px] sm:text-xl lg:text-2xl uppercase break-words leading-none">Fullstack</span>
+                </div>
+                <div class="bg-[#34495e] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
+                    <i data-lucide="database" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
+                    <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">SQL</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="skills" class="bg-[#2c3e50] py-16 px-6 text-white">
+    <section id="skills" class="bg-[#2c3e50] py-16 px-6 text-white scroll-mt-20">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-black mb-12 uppercase text-center sm:text-left border-b-4 border-[#3498db] pb-4 inline-block">Technical Arsenal</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-8">
                 <div>
                     <h3 class="text-[#3498db] font-black uppercase mb-4 tracking-tighter text-xl italic">Languages</h3>
-                    <ul class="font-bold space-y-3 opacity-90">
+                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
                         <li>• Java</li><li>• Python</li><li>• JavaScript</li><li>• PHP / C</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-[#2ecc71] font-black uppercase mb-4 tracking-tighter text-xl italic">Frontend</h3>
-                    <ul class="font-bold space-y-3 opacity-90">
+                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
                         <li>• Angular</li><li>• React</li><li>• Tailwind CSS</li><li>• HTML5/CSS3</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-[#e74c3c] font-black uppercase mb-4 tracking-tighter text-xl italic">Backend</h3>
-                    <ul class="font-bold space-y-3 opacity-90">
-                        <li>• Node.js</li><li>• .NET Core</li><li>• MySQL</li><li>• Oracle 21c</li>
+                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
+                        <li>• Node.js</li><li>• .NET Core</li><li>• MySQL</li><li>• MS SQL Server</li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-[#f1c40f] font-black uppercase mb-4 tracking-tighter text-xl italic">Cloud/OS</h3>
-                    <ul class="font-bold space-y-3 opacity-90">
-                        <li>• AWS Cloud</li><li>• Unix Shell</li><li>• Git/GitHub</li><li>• OpenBSD</li>
+                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
+                        <li>• AWS (Lambda, S3)</li><li>• Unix/Shell</li><li>• Git/GitHub</li><li>• OpenBSD</li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-16 px-6 lg:py-24 max-w-7xl mx-auto">
+    <section id="projects" class="py-16 px-6 lg:py-24 max-w-7xl mx-auto scroll-mt-20">
         <div class="mb-12">
-            <h2 class="text-3xl sm:text-4xl font-black uppercase">Projects</h2>
+            <h2 class="text-3xl sm:text-4xl font-black uppercase">GitHub Projects</h2>
             <div class="h-2 w-24 bg-[#3498db] mt-2"></div>
         </div>
         
         <div id="loading" class="flex flex-col items-center py-20">
             <div class="loader rounded-full border-4 border-gray-200 h-12 w-12 mb-4"></div>
-            <p class="font-bold uppercase text-xs tracking-widest opacity-50">Syncing with GitHub...</p>
+            <p class="font-bold uppercase text-xs tracking-widest opacity-50">Syncing API...</p>
         </div>
 
         <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 hidden">
@@ -147,7 +150,7 @@
 
     <footer id="contact" class="bg-[#2c3e50] text-white py-20 px-6 text-center">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl sm:text-4xl font-black mb-10 uppercase tracking-tighter italic">Get In Touch</h2>
+            <h2 class="text-3xl sm:text-4xl font-black mb-10 uppercase tracking-tighter italic">Connect</h2>
             <div class="flex justify-center gap-12 mb-12">
                 <a href="https://github.com/ShadowAmitendu" target="_blank" class="hover:text-[#3498db] transition transform hover:-translate-y-2">
                     <i data-lucide="github" class="w-10 h-10"></i>
@@ -157,26 +160,35 @@
                 </a>
             </div>
             <p class="text-[10px] uppercase font-bold tracking-[0.4em] opacity-30">
-                &copy; 2026 Amitendu Bikash Dhusiya. Responsive Flat UI Design.
+                &copy; 2026 Amitendu Bikash Dhusiya | Built with Tailwind
             </p>
         </div>
     </footer>
 
     <script>
-        // Mobile Menu Toggle
+        // 1. Mobile Menu Auto-Close Logic
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
 
-        // GitHub API Logic
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 2. GitHub API Integration
         const username = 'ShadowAmitendu';
         const projectGrid = document.getElementById('project-grid');
         const loading = document.getElementById('loading');
 
         async function fetchRepos() {
             try {
+                // Fetch 12 most recent public repos
                 const res = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
                 const data = await res.json();
                 
@@ -184,13 +196,14 @@
                 projectGrid.classList.remove('hidden');
 
                 data.forEach(repo => {
+                    // Filter: Only show non-forked repos that have descriptions
                     if(!repo.fork && repo.description) {
                         const card = document.createElement('div');
                         card.className = "bg-white border-4 border-[#2c3e50] flat-border p-6 flex flex-col transition-all hover:bg-[#f9f9f9]";
                         card.innerHTML = `
                             <div class="flex justify-between items-start mb-6">
                                 <div class="bg-[#2c3e50] text-white p-2 flex items-center justify-center">
-                                    <i data-lucide="code" class="w-5 h-5"></i>
+                                    <i data-lucide="folder" class="w-5 h-5"></i>
                                 </div>
                                 <span class="text-[10px] font-black uppercase bg-[#3498db] text-white px-2 py-1">${repo.language || 'Dev'}</span>
                             </div>
@@ -198,13 +211,14 @@
                             <p class="text-sm leading-relaxed mb-8 opacity-80 line-clamp-3">${repo.description}</p>
                             <div class="mt-auto">
                                 <a href="${repo.html_url}" target="_blank" class="inline-block bg-[#2c3e50] text-white px-4 py-2 text-[10px] font-black uppercase flat-border tracking-widest">
-                                    Source
+                                    Source Code
                                 </a>
                             </div>
                         `;
                         projectGrid.appendChild(card);
                     }
                 });
+                // Re-initialize icons for dynamic content
                 lucide.createIcons();
             } catch (e) {
                 loading.innerHTML = "<p class='font-black text-red-500 uppercase'>API Connection Error</p>";
