@@ -1,70 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Amitendu | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>
+    <title>Amitendu | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Flat UI Palette */
+        :root {
+            --midnight: #2c3e50;
+            --clouds: #ecf0f1;
+            --peter-river: #3498db;
+            --alizarin: #e74c3c;
+            --emerald: #2ecc71;
+            --sunflower: #f1c40f;
+        }
+        body { background-color: var(--clouds); color: var(--midnight); font-family: 'Inter', sans-serif; }
+        .flat-card { border-bottom: 4px solid rgba(0,0,0,0.1); transition: all 0.2s; }
+        .flat-card:hover { transform: translateY(-2px); border-bottom-width: 6px; }
+    </style>
 </head>
-<body>
-    <nav>
-        <div class="logo">Shadow<span>Amitendu</span></div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+<body class="antialiased">
+
+    <nav class="bg-[#2c3e50] text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tighter">SHADOW<span class="text-[#3498db]">AMITENDU</span></div>
+            <div class="hidden md:flex space-x-8 font-bold uppercase text-sm tracking-widest">
+                <a href="#about" class="hover:text-[#3498db]">About</a>
+                <a href="#skills" class="hover:text-[#3498db]">Skills</a>
+                <a href="#projects" class="hover:text-[#3498db]">Projects</a>
+                <a href="#contact" class="hover:text-[#3498db]">Contact</a>
+            </div>
+        </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Amitendu Bikash Dhusiya</span></h1>
-            <p>BCA Student | Full-Stack Developer | Gamer & Streamer</p>
-            <a href="#projects" class="btn">View My Work</a>
+    <header class="bg-[#3498db] text-white py-24 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-7xl font-black mb-6 uppercase leading-tight">Coder. Gamer. <br><span class="bg-[#2c3e50] px-4">Streamer.</span></h1>
+            <p class="text-xl md:text-2xl font-medium mb-10 opacity-90">Building digital experiences from Techno College Hooghly to the world.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#projects" class="bg-[#2c3e50] hover:bg-[#34495e] text-white px-8 py-4 font-bold uppercase tracking-widest transition">My Projects</a>
+                <a href="https://github.com/ShadowAmitendu" class="bg-white text-[#2c3e50] hover:bg-[#ecf0f1] px-8 py-4 font-bold uppercase tracking-widest transition">GitHub</a>
+            </div>
         </div>
     </header>
 
-    <section id="about" class="section">
-        <h2>About Me</h2>
-        <p>I am a final-year BCA student at <strong>Techno College Hooghly</strong>. I blend technical logic with creative content, bridging the gap between efficient backend systems and engaging frontend experiences.</p>
-    </section>
-
-    <section id="skills" class="section">
-        <h2>Tech Stack</h2>
-        <div class="skills-grid">
-            <div class="skill-card"><h3>Languages</h3><p>Java, Python, PHP, C, JavaScript</p></div>
-            <div class="skill-card"><h3>Frontend</h3><p>Angular, React, HTML5, CSS3</p></div>
-            <div class="skill-card"><h3>Backend/DB</h3><p>Node.js, MySQL, Oracle 21c, .NET</p></div>
-            <div class="skill-card"><h3>Cloud</h3><p>AWS (Lambda, S3), Unix Shell</p></div>
+    <section id="about" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-white p-8 flat-card border-2 border-[#2c3e50]">
+                <h2 class="text-3xl font-black mb-4 uppercase text-[#2c3e50]">The Mission</h2>
+                <p class="text-lg leading-relaxed mb-4">
+                    I'm <strong>Amitendu Bikash Dhusiya</strong>, a BCA student and developer focused on <strong>Full-Stack development</strong> and <strong>Data Structures</strong>. 
+                </p>
+                <p class="text-lg leading-relaxed">
+                    When I'm not writing Java or Python, I'm streaming games like <em>Genshin Impact</em> or <em>Valorant</em>, blending tech logic with creative entertainment.
+                </p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-[#2ecc71] p-6 text-white text-center flat-card">
+                    <i data-lucide="code-2" class="mx-auto mb-2 w-10 h-10"></i>
+                    <span class="block font-black text-2xl">23+</span>
+                    <span class="uppercase text-xs font-bold">Repos</span>
+                </div>
+                <div class="bg-[#f1c40f] p-6 text-[#2c3e50] text-center flat-card">
+                    <i data-lucide="youtube" class="mx-auto mb-2 w-10 h-10"></i>
+                    <span class="block font-black text-2xl">Content</span>
+                    <span class="uppercase text-xs font-bold">Creator</span>
+                </div>
+                <div class="bg-[#e74c3c] p-6 text-white text-center flat-card">
+                    <i data-lucide="database" class="mx-auto mb-2 w-10 h-10"></i>
+                    <span class="block font-black text-2xl">SQL/NoSQL</span>
+                    <span class="uppercase text-xs font-bold">Databases</span>
+                </div>
+                <div class="bg-[#3498db] p-6 text-white text-center flat-card">
+                    <i data-lucide="terminal" class="mx-auto mb-2 w-10 h-10"></i>
+                    <span class="block font-black text-2xl">BCA</span>
+                    <span class="uppercase text-xs font-bold">Student</span>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section id="projects" class="section">
-        <h2>Featured Projects</h2>
-        <div class="project-container">
-            <div class="project-card">
-                <h3>Missing Roll Numbers App</h3>
-                <p>Android app built with Kotlin for MAKAUT educators to track student submissions.</p>
-                <a href="https://github.com/ShadowAmitendu/Missing-Roll-Numbers-Android" class="repo-link">View Repo</a>
-            </div>
-            <div class="project-card">
-                <h3>eCommerce API</h3>
-                <p>A Python-based middleware system with MySQL integration for scalable shopping apps.</p>
-            </div>
-            <div class="project-card">
-                <h3>Serverless Contact Form</h3>
-                <p>AWS Lambda & DynamoDB implementation for modern cloud-native messaging.</p>
+    <section id="skills" class="bg-[#2c3e50] py-20 px-6 text-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl font-black mb-12 uppercase text-center">Tech Stack</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="space-y-4">
+                    <h3 class="text-[#3498db] font-black uppercase tracking-widest border-b-2 border-[#3498db] pb-2">Languages</h3>
+                    <ul class="font-bold space-y-2">
+                        <li>Java</li><li>Python</li><li>PHP</li><li>C / C++</li><li>JavaScript</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-[#2ecc71] font-black uppercase tracking-widest border-b-2 border-[#2ecc71] pb-2">Frontend</h3>
+                    <ul class="font-bold space-y-2">
+                        <li>Angular</li><li>React</li><li>Tailwind CSS</li><li>HTML5 / CSS3</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-[#e74c3c] font-black uppercase tracking-widest border-b-2 border-[#e74c3c] pb-2">Backend</h3>
+                    <ul class="font-bold space-y-2">
+                        <li>Node.js</li><li>.NET</li><li>MySQL</li><li>Oracle 21c</li>
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h3 class="text-[#f1c40f] font-black uppercase tracking-widest border-b-2 border-[#f1c40f] pb-2">Tools</h3>
+                    <ul class="font-bold space-y-2">
+                        <li>AWS Cloud</li><li>Git / GitHub</li><li>Unix Shell</li><li>Vite</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact">
-        <p>Connect with me on <a href="https://github.com/ShadowAmitendu">GitHub</a> or <a href="#">YouTube</a></p>
-        <p>&copy; 2026 ShadowAmitendu. Built with HTML, CSS, and JS.</p>
+    <section id="projects" class="py-20 px-6 max-w-6xl mx-auto">
+        <h2 class="text-4xl font-black mb-12 uppercase">Selected Works</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white border-4 border-[#2c3e50] flat-card p-6">
+                <div class="bg-[#3498db] text-white w-12 h-12 flex items-center justify-center mb-4">
+                    <i data-lucide="smartphone"></i>
+                </div>
+                <h3 class="text-xl font-black mb-2 uppercase">Missing Roll App</h3>
+                <p class="text-sm mb-6">Kotlin-based Android tool for MAKAUT educators to identify missing roll numbers in PDF batches.</p>
+                <a href="#" class="inline-block font-black uppercase text-sm border-b-2 border-[#3498db] hover:text-[#3498db]">View Source</a>
+            </div>
+
+            <div class="bg-white border-4 border-[#2c3e50] flat-card p-6">
+                <div class="bg-[#2ecc71] text-white w-12 h-12 flex items-center justify-center mb-4">
+                    <i data-lucide="shopping-cart"></i>
+                </div>
+                <h3 class="text-xl font-black mb-2 uppercase">eCommerce API</h3>
+                <p class="text-sm mb-6">Scalable backend built with Python and MySQL featuring middleware for secure transactions.</p>
+                <a href="#" class="inline-block font-black uppercase text-sm border-b-2 border-[#2ecc71] hover:text-[#2ecc71]">View Source</a>
+            </div>
+
+            <div class="bg-white border-4 border-[#2c3e50] flat-card p-6">
+                <div class="bg-[#e74c3c] text-white w-12 h-12 flex items-center justify-center mb-4">
+                    <i data-lucide="cloud"></i>
+                </div>
+                <h3 class="text-xl font-black mb-2 uppercase">Serverless Form</h3>
+                <p class="text-sm mb-6">AWS integration using S3, Lambda, and DynamoDB for a contact system with zero server management.</p>
+                <a href="#" class="inline-block font-black uppercase text-sm border-b-2 border-[#e74c3c] hover:text-[#e74c3c]">View Source</a>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-[#2c3e50] text-white py-12 px-6 text-center">
+        <h2 class="text-3xl font-black mb-6 uppercase">Let's Connect</h2>
+        <div class="flex justify-center gap-6 mb-8">
+            <a href="https://github.com/ShadowAmitendu" class="hover:text-[#3498db] transition"><i data-lucide="github"></i></a>
+            <a href="#" class="hover:text-[#3498db] transition"><i data-lucide="youtube"></i></a>
+            <a href="#" class="hover:text-[#3498db] transition"><i data-lucide="mail"></i></a>
+        </div>
+        <p class="text-xs uppercase font-bold tracking-tighter opacity-50">
+            &copy; 2026 ShadowAmitendu. Built with Tailwind & Flat UI.
+        </p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
 </body>
 </html>
