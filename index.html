@@ -62,16 +62,24 @@
     </style>
 </head>
 <body class="antialiased">
+<div id="custom-cursor" class="fixed top-0 left-0 w-8 h-8 bg-[#3498db] rounded-full pointer-events-none z-[999] mix-blend-difference hidden md:block opacity-0 translate-x-[-50%] translate-y-[-50%]"></div>
 <div class="fixed inset-0 z-[100] bg-[#2c3e50] flex items-center justify-center overflow-hidden" id="loader">
-    <div class="shutter absolute inset-0 bg-[#3498db] translate-y-full"></div>
+    <div class="shutter-white absolute inset-0 bg-white translate-y-full z-10"></div>
 
-    <div class="relative z-10 text-center">
-        <div class="text-white font-[900] text-5xl md:text-8xl tracking-tighter uppercase opacity-0" id="loader-text">
-            SHADOW<span class="text-[#3498db]">AMITENDU</span>
+    <div class="shutter-blue absolute inset-0 bg-[#3498db] translate-y-full z-20"></div>
+
+    <div class="relative z-30 text-center">
+        <div class="text-white font-[900] text-[clamp(1.5rem,10vw,6rem)] whitespace-nowrap tracking-tighter uppercase opacity-0 relative top-8 px-4"
+             id="loader-text">
+            SHADOW<span class="text-[#3498db]" id="brand-span">AMITENDU</span>
         </div>
-        <div class="mt-4 w-48 h-1 bg-white/20 mx-auto overflow-hidden" id="loader-bar-container">
+
+        <div class="mt-6 w-64 h-2 bg-white/20 mx-auto overflow-hidden relative top-8 opacity-0"
+             id="loader-bar-container">
             <div class="w-0 h-full bg-[#3498db]" id="loader-bar"></div>
         </div>
+
+        <div class="mt-4 text-white font-black text-2xl opacity-0 relative top-8" id="loader-percentage">0%</div>
     </div>
 </div>
 <!--
@@ -85,15 +93,17 @@
         <div class="flex justify-between h-16 items-center">
             <!-- Logo/Brand -->
             <div class="text-xl sm:text-2xl font-black tracking-tighter uppercase">
-                SHADOW<span class="text-[#3498db]">AMITENDU</span>
+                <a href="#">
+                    SHADOW<span class="text-[#3498db]">AMITENDU</span>
+                </a>
             </div>
 
             <!-- Desktop Navigation Links (hidden on mobile) -->
             <div class="hidden md:flex space-x-6 lg:space-x-10 font-bold uppercase text-xs tracking-widest">
                 <a class="hover:text-[#3498db] transition" href="#about">About</a>
+                <a class="hover:text-[#3498db] transition" href="#roadmap">Roadmap</a>
                 <a class="hover:text-[#3498db] transition" href="#skills">Skills</a>
                 <a class="hover:text-[#3498db] transition" href="#projects">Projects</a>
-                <a class="hover:text-[#3498db] transition" href="#contact">Contact</a>
             </div>
 
             <!-- Mobile Menu Button (visible only on mobile) -->
@@ -109,9 +119,9 @@
     <div class="hidden md:hidden bg-[#34495e] border-t-4 border-[#3498db]" id="mobile-menu">
         <div class="px-4 py-6 space-y-4 font-bold uppercase text-center tracking-widest text-sm">
             <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#about">About</a>
+            <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#roadmap">Roadmap</a>
             <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#skills">Skills</a>
             <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#projects">Projects</a>
-            <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#contact">Contact</a>
         </div>
     </div>
 </nav>
@@ -149,7 +159,7 @@
 <section class="py-16 px-6 lg:py-24 max-w-7xl mx-auto scroll-mt-20" id="about">
     <div class="grid lg:grid-cols-12 gap-10">
         <!-- Bio Card -->
-        <div class="lg:col-span-7 bg-white p-8 sm:p-12 border-4 border-[#2c3e50] flat-border">
+        <div class="lg:col-span-7 bg-white p-8 sm:p-12 border-4 border-[#2c3e50]">
             <h2 class="text-3xl sm:text-4xl font-black mb-6 uppercase">The Profile</h2>
             <p class="text-base sm:text-lg leading-relaxed mb-6">
                 I'm <strong>Amitendu Bikash Dhusiya</strong>, a student currently pursuing my BCA degree. My work ranges
@@ -157,9 +167,9 @@
             </p>
             <!-- Skill Tags -->
             <div class="flex flex-wrap gap-2 sm:gap-4">
-                <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">BCA Final Year</span>
+                <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">BCA Third Year</span>
                 <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Software Dev</span>
-                <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Open Source</span>
+                <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Open Source Contributor</span>
             </div>
         </div>
 
@@ -171,11 +181,11 @@
             </div>
             <div class="bg-[#f1c40f] p-4 sm:p-6 text-[#2c3e50] text-center flat-border flex flex-col justify-center overflow-hidden">
                 <i class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6" data-lucide="play"></i>
-                <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Live</span>
+                <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Python</span>
             </div>
             <div class="bg-[#e74c3c] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
                 <i class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6" data-lucide="layers"></i>
-                <span class="block font-black text-[10px] sm:text-xl lg:text-2xl uppercase break-words leading-none">Fullstack</span>
+                <span class="block font-black text-[10px] sm:text-xl lg:text-2xl uppercase break-words leading-none">Angular</span>
             </div>
             <div class="bg-[#34495e] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
                 <i class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6" data-lucide="database"></i>
@@ -194,36 +204,47 @@
     - End date (July 30, 2027)
     - Animated progress bar calculated via JavaScript
 -->
-<section class="py-12 px-6 max-w-7xl mx-auto scroll-mt-20" id="roadmap">
-    <div class="bg-white border-4 border-[#2c3e50] p-8 flat-border">
-        <!-- Header with title and percentage -->
-        <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
+<section class="py-16 px-4 max-w-7xl mx-auto scroll-mt-20" id="roadmap">
+    <div class="bg-white border-4 border-[#2c3e50] p-6 sm:p-10 relative overflow-hidden">
+
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-4">
             <div>
-                <h2 class="text-3xl font-black uppercase italic tracking-tighter">Academic Roadmap</h2>
-                <p class="text-sm font-bold text-[#3498db] uppercase tracking-widest">BCA Journey @ Techno College
-                    Hooghly</p>
+                <h2 class="text-[clamp(1.5rem,5vw,3rem)] font-black uppercase italic tracking-tighter leading-none text-[#2c3e50]">
+                    Academic Roadmap
+                </h2>
+                <p class="text-[clamp(0.6rem,2vw,0.85rem)] font-bold text-[#3498db] uppercase tracking-[0.2em] mt-2">
+                    BCA Journey @ Techno College Hooghly
+                </p>
             </div>
-            <div class="text-right">
-                <!-- Dynamic percentage updated by JavaScript -->
-                <span class="text-4xl font-black text-[#2c3e50]" id="progress-percent">0%</span>
-                <p class="text-[10px] font-black uppercase opacity-50">Completed</p>
+            <div class="text-left sm:text-right">
+                <span class="text-[clamp(2.5rem,8vw,5rem)] font-black text-[#2c3e50] leading-none"
+                      id="progress-percent-large">0%</span>
+                <p class="text-[10px] font-black uppercase opacity-40 tracking-widest">Degree Completion</p>
             </div>
         </div>
 
-        <!-- Progress Bar -->
-        <div class="w-full bg-[#ecf0f1] border-4 border-[#2c3e50] h-10 relative overflow-hidden">
-            <div class="bg-[#2ecc71] h-full transition-all duration-1000 ease-out flex items-center justify-end px-4"
+        <div class="w-full bg-[#ecf0f1] border-4 border-[#2c3e50] h-12 sm:h-16 relative overflow-hidden">
+            <div class="bg-[#2ecc71] h-full flex items-center justify-between px-4 sm:px-6 transition-all duration-[2000ms] ease-out"
                  id="progress-fill"
-                 style="width: 0">
-                <i class="text-[#2c3e50] w-6 h-6" data-lucide="graduation-cap"></i>
+                 style="width: 0%">
+                <i class="text-[#2c3e50] w-6 h-6 sm:w-8 sm:h-8" data-lucide="graduation-cap"></i>
+                <span class="font-black text-[#2c3e50] text-xs sm:text-lg" id="progress-percent-bar">0%</span>
             </div>
         </div>
 
-        <!-- Timeline Labels -->
-        <div class="flex justify-between mt-4 font-black uppercase text-[10px] sm:text-xs tracking-tighter">
-            <span>Aug 1, 2023 <br><span class="opacity-40 font-bold">The Beginning</span></span>
-            <span class="text-center">Current Phase: <br><span class="text-[#e74c3c]">Semester 6 & Labs</span></span>
-            <span class="text-right">July 30, 2027 <br><span class="opacity-40 font-bold">Graduation</span></span>
+        <div class="grid grid-cols-3 mt-6 font-black uppercase text-[clamp(0.55rem,2vw,0.85rem)] tracking-tighter gap-2">
+            <div class="text-left border-l-2 border-[#2c3e50] pl-2">
+                Aug 1, 2023 <br>
+                <span class="opacity-40 italic">The Beginning</span>
+            </div>
+            <div class="text-center">
+                Current Phase: <br>
+                <span class="text-[#e74c3c]">Semester 6 & Labs</span>
+            </div>
+            <div class="text-right border-r-2 border-[#2c3e50] pr-2">
+                July 30, 2027 <br>
+                <span class="opacity-40 italic">Graduation</span>
+            </div>
         </div>
     </div>
 </section>
@@ -315,30 +336,122 @@
     Social media links and copyright notice
     Links to GitHub and YouTube profiles
 -->
-<footer class="bg-[#2c3e50] text-white py-20 px-6 text-center" id="contact">
-    <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl sm:text-4xl font-black mb-10 uppercase tracking-tighter italic">Connect</h2>
-        <!-- Social Media Icons -->
-        <div class="flex justify-center gap-12 mb-12">
-            <a class="hover:text-[#3498db] transition transform hover:-translate-y-2"
-               href="https://github.com/ShadowAmitendu"
-               target="_blank">
-                <i class="w-10 h-10" data-lucide="github"></i>
-            </a>
-            <a class="hover:text-[#e74c3c] transition transform hover:-translate-y-2"
-               href="https://www.youtube.com/ShadowAmitendu"
-               target="_blank">
-                <i class="w-10 h-10" data-lucide="youtube"></i>
-            </a>
+<footer class="bg-[#2c3e50] text-white pt-24 pb-12 px-6 overflow-hidden" id="contact">
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-20 text-center md:text-left flex flex-col md:flex-row justify-between items-center gap-10">
+            <h2 class="text-[clamp(2.5rem,10vw,8rem)] font-black uppercase leading-[0.8] tracking-tighter italic">
+                Let's Build <br> <span class="text-[#3498db]">Something.</span>
+            </h2>
+
+            <div class="flex gap-6">
+                <a href="https://github.com/ShadowAmitendu" target="_blank"
+                   class="magnetic-btn w-24 h-24 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-white hover:text-[#2c3e50] transition-colors duration-500">
+                    <i data-lucide="github" class="w-8 h-8"></i>
+                </a>
+                <a href="https://www.youtube.com/ShadowAmitendu" target="_blank"
+                   class="magnetic-btn w-24 h-24 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-[#e74c3c] hover:border-[#e74c3c] transition-colors duration-500">
+                    <i data-lucide="youtube" class="w-8 h-8"></i>
+                </a>
+            </div>
         </div>
-        <!-- Copyright -->
-        <p class="text-[10px] uppercase font-bold tracking-[0.4em] opacity-30">
-            &copy; 2026 Amitendu Bikash Dhusiya | Built with Tailwind
-        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/10 uppercase font-black text-[10px] tracking-[0.2em]">
+            <div class="flex flex-col gap-4">
+                <p class="opacity-30">Location</p>
+                <p>Hooghly, West Bengal</p>
+            </div>
+            <div class="flex flex-col gap-4">
+                <p class="opacity-30">Current Phase</p>
+                <p>BCA Semester 6</p>
+            </div>
+            <div class="flex flex-col gap-4 md:col-start-4 text-right">
+                <p class="opacity-30">Local Time</p>
+                <p id="local-time">--:-- --</p>
+            </div>
+        </div>
+
+        <div class="mt-10 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-white/10 pt-8 opacity-30 text-[9px] uppercase font-bold tracking-[0.4em]">
+            <p>&copy; 2026 Amitendu Bikash Dhusiya</p>
+            <p>Designed for ShadowAmitendu</p>
+            <p>Built with Tailwind & GSAP</p>
+        </div>
     </div>
 </footer>
 
 <script>
+    // --- 1. GSAP LOADER TIMELINE ---
+    const tl = gsap.timeline({
+        onComplete: () => {
+            // Re-enable scrolling once the animation is done
+            document.body.classList.remove('overflow-hidden');
+        }
+    });
+
+    window.addEventListener('load', () => {
+        // Percentage Counter Object for Loader
+        let loaderCounter = {value: 0};
+        const loaderPercentElement = document.getElementById('loader-percentage');
+
+        // Reveal Loader Elements
+        tl.to(["#loader-text", "#loader-bar-container", "#loader-percentage"], {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power4.out",
+            stagger: 0.1
+        })
+
+            // Sync Bar Fill and Percentage Counter (0 to 100%)
+            .to("#loader-bar", {
+                width: "100%",
+                duration: 2,
+                ease: "power2.inOut"
+            }, "-=0.4")
+            .to(loaderCounter, {
+                value: 100,
+                duration: 2,
+                ease: "power2.inOut",
+                onUpdate: () => {
+                    loaderPercentElement.innerText = Math.round(loaderCounter.value) + "%";
+                }
+            }, "<")
+
+            // CONTRAST FIX: Flip "AMITENDU" to white before the blue shutter hits
+            .to("#brand-span", {
+                color: "#ffffff",
+                duration: 0.3
+            })
+
+            // SHUTTER SEQUENCE: White (z-10) then Blue (z-20)
+            .to(".shutter-white", {
+                y: 0,
+                duration: 0.6,
+                ease: "power3.in"
+            })
+            .to(".shutter-blue", {
+                y: 0,
+                duration: 0.6,
+                ease: "power3.in"
+            }, "-=0.5")
+
+            // FINAL EXIT: Slide entire loader up
+            .to("#loader", {
+                yPercent: -100,
+                duration: 0.8,
+                ease: "expo.inOut"
+            }, "-=0.2")
+
+            // HERO ENTRANCE: Animate main site elements
+            .set("#main-content", {opacity: 1}, "-=0.8")
+            .from(".hero-content h1, .hero-content p", {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power4.out",
+                stagger: 0.2
+            }, "-=0.5");
+    });
+
     /**
      * Mobile Menu Toggle
      * Handles opening/closing the mobile navigation menu
@@ -385,7 +498,7 @@
                 // Only display non-forked repos with descriptions
                 if (!repo.fork && repo.description) {
                     const card = document.createElement('div');
-                    card.className = "bg-white border-4 border-[#2c3e50] flat-border p-6 flex flex-col transition-all hover:bg-[#f9f9f9]";
+                    card.className = "bg-white border-4 border-[#2c3e50] p-6 flex flex-col transition-all hover:bg-[#f9f9f9]";
                     card.innerHTML = `
                             <div class="flex justify-between items-start mb-6">
                                 <div class="bg-[#2c3e50] text-white p-2 flex items-center justify-center">
@@ -420,75 +533,91 @@
      * Academic Progress Calculator
      * Calculates degree completion percentage based on:
      * - Start: Aug 1, 2023
-     * - End: July 30, 2027
+     * - End: July 30, 2027,
      * Updates progress bar and percentage text dynamically
      */
-    function updateDegreeProgress() {
-        const startDate = new Date('2023-08-01');
-        const endDate = new Date('2027-07-30');
-        const today = new Date();
+    // --- Academic Roadmap Logic ---
+
+    function initAcademicRoadmap() {
+        // 1. Calculate Progress
+        const startDate = new Date('2023-08-01').getTime();
+        const endDate = new Date('2027-07-30').getTime();
+        const today = new Date().getTime();
 
         const totalDuration = endDate - startDate;
         const timeElapsed = today - startDate;
 
-        // Calculate percentage (clamped between 0-100)
-        let percentage = Math.floor((timeElapsed / totalDuration) * 100);
-        percentage = Math.min(Math.max(percentage, 0), 100);
+        // Percentage Calculation (currently ~62% as of Jan 2026)
+        let finalPercentage = Math.floor((timeElapsed / totalDuration) * 100);
+        finalPercentage = Math.min(Math.max(finalPercentage, 0), 100);
 
-        // Update DOM elements
-        const fill = document.getElementById('progress-fill');
-        const text = document.getElementById('progress-percent');
+        // 2. GSAP ScrollTrigger Animation
+        // This ensures the bar only fills up when the user reaches the section
+        gsap.fromTo("#progress-fill",
+            {width: "0%"},
+            {
+                width: finalPercentage + "%",
+                duration: 2.5,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: "#roadmap",
+                    start: "top 80%", // Starts when the section is 80% from the top of the viewport
+                },
+                onUpdate: function () {
+                    // Update the percentage numbers during the animation
+                    const currentWidth = parseFloat(this.targets()[0].style.width);
+                    const displayVal = Math.round(currentWidth) + "%";
 
-        if (fill && text) {
-            fill.style.width = percentage + '%';
-            text.innerText = percentage + '%';
-        }
+                    document.getElementById('progress-percent-large').innerText = displayVal;
+                    document.getElementById('progress-percent-bar').innerText = displayVal;
+                }
+            }
+        );
     }
 
-    // Execute on page load
-    updateDegreeProgress();
-
-    // Create GSAP Timeline
-    const tl = gsap.timeline();
-
+    // Ensure GSAP and ScrollTrigger are loaded before calling
     window.addEventListener('load', () => {
-        // 1. Fade in the text
-        tl.to("#loader-text", {
-            opacity: 1,
-            y: -20,
-            duration: 0.8,
-            ease: "power4.out"
-        })
-            // 2. Animate the mini loading bar
-            .to("#loader-bar", {
-                width: "100%",
-                duration: 1.2,
-                ease: "expo.inOut"
-            }, "-=0.4")
-            // 3. Scale up text slightly before exit
-            .to("#loader-text", {
-                scale: 1.1,
-                duration: 0.5,
-                ease: "power2.in"
-            })
-            // 4. Slide up the shutter and the whole loader
-            .to(".shutter", {
-                y: 0,
-                duration: 0.6,
-                ease: "power4.inOut"
-            })
-            .to("#loader", {
-                yPercent: -100,
-                duration: 0.8,
-                ease: "expo.inOut"
-            }, "-=0.2")
-            // 5. Hero Section Reveal (Optional extra pop)
-            .from("header h1", {
-                y: 100,
-                opacity: 0,
-                duration: 1,
-                ease: "power4.out"
-            }, "-=0.3");
+        // If you aren't using ScrollTrigger, you can call it directly:
+        // initAcademicRoadmap();
+
+        // For standard loading with the GSAP loader we built:
+        setTimeout(initAcademicRoadmap, 2500);
+    });
+    // --- Figma-style Custom Cursor Logic ---
+
+    const cursor = document.getElementById('custom-cursor');
+
+    // Move the cursor smoothly
+    const xTo = gsap.quickTo(cursor, "x", { duration: 0.4, ease: "power3" });
+    const yTo = gsap.quickTo(cursor, "y", { duration: 0.4, ease: "power3" });
+
+    window.addEventListener("mousemove", e => {
+        // Reveal cursor on first movement
+        gsap.to(cursor, { opacity: 1, duration: 0.5 });
+
+        xTo(e.clientX);
+        yTo(e.clientY);
+    });
+
+    // Scale effect for interactive elements (Links, Buttons, Magnetic Socials)
+    const interactives = document.querySelectorAll('a, button, .magnetic-btn, .flat-card');
+
+    interactives.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            gsap.to(cursor, {
+                scale: 2.5,
+                backgroundColor: "#ffffff",
+                duration: 0.3
+            });
+        });
+
+        el.addEventListener('mouseleave', () => {
+            gsap.to(cursor, {
+                scale: 1,
+                backgroundColor: "#3498db",
+                duration: 0.3
+            });
+        });
     });
 </script>
 </body>
