@@ -19,6 +19,25 @@
             color: #2c3e50;
         }
 
+        /* Spacing to allow the reveal */
+        body {
+            margin-bottom: 300px; /* Match the height of the hidden-secret section */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .animate-marquee {
+            animation: marquee 20s linear infinite;
+            color: white;
+        }
+
         /**
          * Flat Border Effect
          * Creates a pseudo-3D button effect with bottom border
@@ -59,11 +78,38 @@
             word-wrap: break-word;
             word-break: break-all;
         }
+
+        /* Custom Flat UI Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #2c3e50; /* Midnight Blue */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3498db; /* Peter River Blue */
+            border: 2px solid #2c3e50;
+            border-radius: 0px; /* Flat look */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2ecc71; /* Emerald Green on hover */
+        }
+
+        /* For Firefox */
+        * {
+            scrollbar-width: thin;
+            scrollbar-color: #3498db #2c3e50;
+        }
     </style>
 </head>
 <body class="antialiased">
-<div id="custom-cursor" class="fixed top-0 left-0 w-8 h-8 bg-[#3498db] rounded-full pointer-events-none z-[999] mix-blend-difference hidden md:block opacity-0 translate-x-[-50%] translate-y-[-50%]"></div>
+<div class="fixed top-0 left-0 w-8 h-8 bg-[#3498db] rounded-full pointer-events-none z-[999] mix-blend-difference hidden md:block opacity-0 translate-x-[-50%] translate-y-[-50%]"
+     id="custom-cursor"></div>
 <div class="fixed inset-0 z-[100] bg-[#2c3e50] flex items-center justify-center overflow-hidden" id="loader">
+
     <div class="shutter-white absolute inset-0 bg-white translate-y-full z-10"></div>
 
     <div class="shutter-blue absolute inset-0 bg-[#3498db] translate-y-full z-20"></div>
@@ -133,6 +179,7 @@
 -->
 <header class="bg-[#3498db] text-white px-6 py-20 lg:py-32">
     <div class="max-w-5xl mx-auto text-center">
+
         <h1 class="text-4xl sm:text-6xl lg:text-8xl font-black mb-6 uppercase leading-none">
             Coder. Gamer. <br class="hidden sm:block"> <span class="bg-[#2c3e50] px-3">Streamer.</span>
         </h1>
@@ -344,31 +391,17 @@
             </h2>
 
             <div class="flex gap-6">
-                <a href="https://github.com/ShadowAmitendu" target="_blank"
-                   class="magnetic-btn w-24 h-24 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-white hover:text-[#2c3e50] transition-colors duration-500">
-                    <i data-lucide="github" class="w-8 h-8"></i>
+                <a class="magnetic-btn w-24 h-24 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-white hover:text-[#2c3e50] transition-colors duration-500" href="https://github.com/ShadowAmitendu"
+                   target="_blank">
+                    <i class="w-8 h-8" data-lucide="github"></i>
                 </a>
-                <a href="https://www.youtube.com/ShadowAmitendu" target="_blank"
-                   class="magnetic-btn w-24 h-24 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-[#e74c3c] hover:border-[#e74c3c] transition-colors duration-500">
-                    <i data-lucide="youtube" class="w-8 h-8"></i>
+                <a class="magnetic-btn w-24 h-24 rounded-full border-2 border-white/20 flex items-center justify-center hover:bg-[#e74c3c] hover:border-[#e74c3c] transition-colors duration-500" href="https://www.youtube.com/ShadowAmitendu"
+                   target="_blank">
+                    <i class="w-8 h-8" data-lucide="youtube"></i>
                 </a>
             </div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 py-10 border-t border-white/10 uppercase font-black text-[10px] tracking-[0.2em]">
-            <div class="flex flex-col gap-4">
-                <p class="opacity-30">Location</p>
-                <p>Hooghly, West Bengal</p>
-            </div>
-            <div class="flex flex-col gap-4">
-                <p class="opacity-30">Current Phase</p>
-                <p>BCA Semester 6</p>
-            </div>
-            <div class="flex flex-col gap-4 md:col-start-4 text-right">
-                <p class="opacity-30">Local Time</p>
-                <p id="local-time">--:-- --</p>
-            </div>
-        </div>
 
         <div class="mt-10 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-white/10 pt-8 opacity-30 text-[9px] uppercase font-bold tracking-[0.4em]">
             <p>&copy; 2026 Amitendu Bikash Dhusiya</p>
@@ -376,7 +409,16 @@
             <p>Built with Tailwind & GSAP</p>
         </div>
     </div>
+    <section class="sticky bottom-0 left-0 w-full h-[300px] bg-[#2c3e50] z-0 flex flex-col items-center justify-center text-center px-6 overflow-hidden"
+             id="hidden-secret">
+        <div class="marquee-container opacity-10 pointer-events-none absolute inset-0 flex items-center overflow-hidden">
+            <h2 class="text-[15rem] font-black uppercase whitespace-nowrap animate-marquee">
+                CREATIVE • DEVELOPER • STREAMER •
+            </h2>
+        </div>
+    </section>
 </footer>
+
 
 <script>
     // --- 1. GSAP LOADER TIMELINE ---
@@ -588,12 +630,12 @@
     const cursor = document.getElementById('custom-cursor');
 
     // Move the cursor smoothly
-    const xTo = gsap.quickTo(cursor, "x", { duration: 0.4, ease: "power3" });
-    const yTo = gsap.quickTo(cursor, "y", { duration: 0.4, ease: "power3" });
+    const xTo = gsap.quickTo(cursor, "x", {duration: 0.4, ease: "power3"});
+    const yTo = gsap.quickTo(cursor, "y", {duration: 0.4, ease: "power3"});
 
     window.addEventListener("mousemove", e => {
         // Reveal cursor on first movement
-        gsap.to(cursor, { opacity: 1, duration: 0.5 });
+        gsap.to(cursor, {opacity: 1, duration: 0.5});
 
         xTo(e.clientX);
         yTo(e.clientY);
