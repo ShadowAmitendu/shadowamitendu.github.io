@@ -1,206 +1,380 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html class="scroll-smooth" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Amitendu Bikash Dhusiya | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #ecf0f1; color: #2c3e50; }
-        .flat-border { border-bottom: 4px solid rgba(0,0,0,0.2); }
-        .flat-border:active { border-bottom-width: 0px; transform: translateY(4px); }
-        .loader { border-top-color: #3498db; animation: spinner 1.5s linear infinite; }
-        @keyframes spinner { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        /* Prevent horizontal overflow on tiny screens */
-        .break-word { word-wrap: break-word; word-break: break-all; }
+        /**
+         * Global Styles
+         * Sets Inter font family and defines the color scheme
+         */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+
+        /**
+         * Flat Border Effect
+         * Creates a pseudo-3D button effect with bottom border
+         * Active state simulates button press by removing border and shifting element down
+         */
+        .flat-border {
+            border-bottom: 4px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .flat-border:active {
+            border-bottom-width: 0;
+            transform: translateY(4px);
+        }
+
+        /**
+         * Loading Spinner Animation
+         * Infinite rotation animation for loading state
+         */
+        .loader {
+            border-top-color: #3498db;
+            animation: spinner 1.5s linear infinite;
+        }
+
+        @keyframes spinner {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /**
+         * Responsive Text Utility
+         * Prevents horizontal overflow on small screens by breaking long words
+         */
+        .break-word {
+            word-wrap: break-word;
+            word-break: break-all;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <nav class="bg-[#2c3e50] text-white sticky top-0 z-50 shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="text-xl sm:text-2xl font-black tracking-tighter uppercase">
-                    SHADOW<span class="text-[#3498db]">AMITENDU</span>
-                </div>
-                
-                <div class="hidden md:flex space-x-6 lg:space-x-10 font-bold uppercase text-xs tracking-widest">
-                    <a href="#about" class="hover:text-[#3498db] transition">About</a>
-                    <a href="#skills" class="hover:text-[#3498db] transition">Skills</a>
-                    <a href="#projects" class="hover:text-[#3498db] transition">Projects</a>
-                    <a href="#contact" class="hover:text-[#3498db] transition">Contact</a>
-                </div>
+<!--
+    Navigation Bar
+    Sticky navigation with responsive menu
+    - Desktop: Horizontal menu links
+    - Mobile: Hamburger menu with slide-down overlay
+-->
+<nav class="bg-[#2c3e50] text-white sticky top-0 z-50 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <!-- Logo/Brand -->
+            <div class="text-xl sm:text-2xl font-black tracking-tighter uppercase">
+                SHADOW<span class="text-[#3498db]">AMITENDU</span>
+            </div>
 
-                <div class="md:hidden">
-                    <button id="menu-btn" class="p-2 outline-none focus:bg-[#34495e]">
-                        <i data-lucide="menu" class="w-6 h-6 text-white"></i>
-                    </button>
-                </div>
+            <!-- Desktop Navigation Links (hidden on mobile) -->
+            <div class="hidden md:flex space-x-6 lg:space-x-10 font-bold uppercase text-xs tracking-widest">
+                <a class="hover:text-[#3498db] transition" href="#about">About</a>
+                <a class="hover:text-[#3498db] transition" href="#skills">Skills</a>
+                <a class="hover:text-[#3498db] transition" href="#projects">Projects</a>
+                <a class="hover:text-[#3498db] transition" href="#contact">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button (visible only on mobile) -->
+            <div class="md:hidden">
+                <button class="p-2 outline-none focus:bg-[#34495e]" id="menu-btn">
+                    <i class="w-6 h-6 text-white" data-lucide="menu"></i>
+                </button>
             </div>
         </div>
+    </div>
 
-        <div id="mobile-menu" class="hidden md:hidden bg-[#34495e] border-t-4 border-[#3498db]">
-            <div class="px-4 py-6 space-y-4 font-bold uppercase text-center tracking-widest text-sm">
-                <a href="#about" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">About</a>
-                <a href="#skills" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">Skills</a>
-                <a href="#projects" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">Projects</a>
-                <a href="#contact" class="mobile-link block py-3 hover:bg-[#2c3e50] transition">Contact</a>
-            </div>
+    <!-- Mobile Menu Dropdown (initially hidden) -->
+    <div class="hidden md:hidden bg-[#34495e] border-t-4 border-[#3498db]" id="mobile-menu">
+        <div class="px-4 py-6 space-y-4 font-bold uppercase text-center tracking-widest text-sm">
+            <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#about">About</a>
+            <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#skills">Skills</a>
+            <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#projects">Projects</a>
+            <a class="mobile-link block py-3 hover:bg-[#2c3e50] transition" href="#contact">Contact</a>
         </div>
-    </nav>
+    </div>
+</nav>
 
-    <header class="bg-[#3498db] text-white px-6 py-20 lg:py-32">
-        <div class="max-w-5xl mx-auto text-center">
-            <h1 class="text-4xl sm:text-6xl lg:text-8xl font-black mb-6 uppercase leading-none">
-                Coder. Gamer. <br class="hidden sm:block"> <span class="bg-[#2c3e50] px-3">Streamer.</span>
-            </h1>
-            <p class="text-lg sm:text-xl lg:text-2xl font-medium mb-10 opacity-95 max-w-2xl mx-auto">
-                BCA Student at Techno College Hooghly. Crafting rule-based systems and digital experiences.
+<!--
+    Hero Section
+    Large banner introducing the portfolio owner
+    Contains main headline, tagline, and CTA buttons
+-->
+<header class="bg-[#3498db] text-white px-6 py-20 lg:py-32">
+    <div class="max-w-5xl mx-auto text-center">
+        <h1 class="text-4xl sm:text-6xl lg:text-8xl font-black mb-6 uppercase leading-none">
+            Coder. Gamer. <br class="hidden sm:block"> <span class="bg-[#2c3e50] px-3">Streamer.</span>
+        </h1>
+        <p class="text-lg sm:text-xl lg:text-2xl font-medium mb-10 opacity-95 max-w-2xl mx-auto">
+            BCA Student at Techno College Hooghly. Crafting rule-based systems and digital experiences.
+        </p>
+        <!-- Call-to-Action Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a class="bg-[#2c3e50] text-white px-10 py-4 font-black uppercase flat-border text-center" href="#projects">View
+                Projects</a>
+            <a class="bg-white text-[#2c3e50] px-10 py-4 font-black uppercase flat-border text-center"
+               href="https://www.youtube.com/ShadowAmitendu"
+               target="_blank">YouTube</a>
+        </div>
+    </div>
+</header>
+
+<!--
+    About Section
+    Two-column layout with bio text and skill badges
+    Left: Profile description and tags
+    Right: 4-tile grid showing core competencies
+-->
+<section class="py-16 px-6 lg:py-24 max-w-7xl mx-auto scroll-mt-20" id="about">
+    <div class="grid lg:grid-cols-12 gap-10">
+        <!-- Bio Card -->
+        <div class="lg:col-span-7 bg-white p-8 sm:p-12 border-4 border-[#2c3e50] flat-border">
+            <h2 class="text-3xl sm:text-4xl font-black mb-6 uppercase">The Profile</h2>
+            <p class="text-base sm:text-lg leading-relaxed mb-6">
+                I'm <strong>Amitendu Bikash Dhusiya</strong>, a student currently pursuing my BCA degree. My work ranges
+                from building eCommerce APIs with Python to serverless contact forms using AWS.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#projects" class="bg-[#2c3e50] text-white px-10 py-4 font-black uppercase flat-border text-center">View Projects</a>
-                <a href="https://www.youtube.com/ShadowAmitendu" target="_blank" class="bg-white text-[#2c3e50] px-10 py-4 font-black uppercase flat-border text-center">YouTube</a>
+            <!-- Skill Tags -->
+            <div class="flex flex-wrap gap-2 sm:gap-4">
+                <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">BCA Final Year</span>
+                <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Software Dev</span>
+                <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Open Source</span>
             </div>
         </div>
-    </header>
 
-    <section id="about" class="py-16 px-6 lg:py-24 max-w-7xl mx-auto scroll-mt-20">
-        <div class="grid lg:grid-cols-12 gap-10">
-            <div class="lg:col-span-7 bg-white p-8 sm:p-12 border-4 border-[#2c3e50] flat-border">
-                <h2 class="text-3xl sm:text-4xl font-black mb-6 uppercase">The Profile</h2>
-                <p class="text-base sm:text-lg leading-relaxed mb-6">
-                    I'm <strong>Amitendu Bikash Dhusiya</strong>, a student currently pursuing my BCA degree. My work ranges from building eCommerce APIs with Python to serverless contact forms using AWS.
-                </p>
-                <div class="flex flex-wrap gap-2 sm:gap-4">
-                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">BCA Final Year</span>
-                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Software Dev</span>
-                    <span class="bg-[#ecf0f1] text-[#2c3e50] px-3 py-1 sm:px-4 sm:py-2 font-bold text-[10px] sm:text-xs uppercase">Open Source</span>
-                </div>
+        <!-- Skill Tiles Grid (2x2) -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
+            <div class="bg-[#2ecc71] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
+                <i class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6" data-lucide="terminal"></i>
+                <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Java</span>
             </div>
-            
-            <div class="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4">
-                <div class="bg-[#2ecc71] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
-                    <i data-lucide="terminal" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-                    <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Java</span>
-                </div>
-                <div class="bg-[#f1c40f] p-4 sm:p-6 text-[#2c3e50] text-center flat-border flex flex-col justify-center overflow-hidden">
-                    <i data-lucide="play" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-                    <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Live</span>
-                </div>
-                <div class="bg-[#e74c3c] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
-                    <i data-lucide="layers" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-                    <span class="block font-black text-[10px] sm:text-xl lg:text-2xl uppercase break-words leading-none">Fullstack</span>
-                </div>
-                <div class="bg-[#34495e] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
-                    <i data-lucide="database" class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6"></i>
-                    <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">SQL</span>
-                </div>
+            <div class="bg-[#f1c40f] p-4 sm:p-6 text-[#2c3e50] text-center flat-border flex flex-col justify-center overflow-hidden">
+                <i class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6" data-lucide="play"></i>
+                <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">Live</span>
+            </div>
+            <div class="bg-[#e74c3c] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
+                <i class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6" data-lucide="layers"></i>
+                <span class="block font-black text-[10px] sm:text-xl lg:text-2xl uppercase break-words leading-none">Fullstack</span>
+            </div>
+            <div class="bg-[#34495e] p-4 sm:p-6 text-white text-center flat-border flex flex-col justify-center overflow-hidden">
+                <i class="mx-auto mb-2 w-5 h-5 sm:w-6 sm:h-6" data-lucide="database"></i>
+                <span class="block font-black text-xs sm:text-xl lg:text-2xl uppercase truncate">SQL</span>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="skills" class="bg-[#2c3e50] py-16 px-6 text-white scroll-mt-20">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-black mb-12 uppercase text-center sm:text-left border-b-4 border-[#3498db] pb-4 inline-block">Technical Arsenal</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-8">
-                <div>
-                    <h3 class="text-[#3498db] font-black uppercase mb-4 tracking-tighter text-xl italic">Languages</h3>
-                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
-                        <li>• Java</li><li>• Python</li><li>• JavaScript</li><li>• PHP / C</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#2ecc71] font-black uppercase mb-4 tracking-tighter text-xl italic">Frontend</h3>
-                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
-                        <li>• Angular</li><li>• React</li><li>• Tailwind CSS</li><li>• HTML5/CSS3</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#e74c3c] font-black uppercase mb-4 tracking-tighter text-xl italic">Backend</h3>
-                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
-                        <li>• Node.js</li><li>• .NET Core</li><li>• MySQL</li><li>• MS SQL Server</li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-[#f1c40f] font-black uppercase mb-4 tracking-tighter text-xl italic">Cloud/OS</h3>
-                    <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
-                        <li>• AWS (Lambda, S3)</li><li>• Unix/Shell</li><li>• Git/GitHub</li><li>• OpenBSD</li>
-                    </ul>
-                </div>
+<!--
+    Academic Roadmap Section
+    Visual progress tracker for BCA degree completion
+    Displays:
+    - Start date (Aug 1, 2023)
+    - Current status (Semester 6)
+    - End date (July 30, 2027)
+    - Animated progress bar calculated via JavaScript
+-->
+<section class="py-12 px-6 max-w-7xl mx-auto scroll-mt-20" id="roadmap">
+    <div class="bg-white border-4 border-[#2c3e50] p-8 flat-border">
+        <!-- Header with title and percentage -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-6 gap-4">
+            <div>
+                <h2 class="text-3xl font-black uppercase italic tracking-tighter">Academic Roadmap</h2>
+                <p class="text-sm font-bold text-[#3498db] uppercase tracking-widest">BCA Journey @ Techno College
+                    Hooghly</p>
+            </div>
+            <div class="text-right">
+                <!-- Dynamic percentage updated by JavaScript -->
+                <span class="text-4xl font-black text-[#2c3e50]" id="progress-percent">0%</span>
+                <p class="text-[10px] font-black uppercase opacity-50">Completed</p>
             </div>
         </div>
-    </section>
 
-    <section id="projects" class="py-16 px-6 lg:py-24 max-w-7xl mx-auto scroll-mt-20">
-        <div class="mb-12">
-            <h2 class="text-3xl sm:text-4xl font-black uppercase">GitHub Projects</h2>
-            <div class="h-2 w-24 bg-[#3498db] mt-2"></div>
-        </div>
-        
-        <div id="loading" class="flex flex-col items-center py-20">
-            <div class="loader rounded-full border-4 border-gray-200 h-12 w-12 mb-4"></div>
-            <p class="font-bold uppercase text-xs tracking-widest opacity-50">Syncing API...</p>
-        </div>
-
-        <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 hidden">
+        <!-- Progress Bar -->
+        <div class="w-full bg-[#ecf0f1] border-4 border-[#2c3e50] h-10 relative overflow-hidden">
+            <div class="bg-[#2ecc71] h-full transition-all duration-1000 ease-out flex items-center justify-end px-4"
+                 id="progress-fill"
+                 style="width: 0">
+                <i class="text-[#2c3e50] w-6 h-6" data-lucide="graduation-cap"></i>
             </div>
-    </section>
-
-    <footer id="contact" class="bg-[#2c3e50] text-white py-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-3xl sm:text-4xl font-black mb-10 uppercase tracking-tighter italic">Connect</h2>
-            <div class="flex justify-center gap-12 mb-12">
-                <a href="https://github.com/ShadowAmitendu" target="_blank" class="hover:text-[#3498db] transition transform hover:-translate-y-2">
-                    <i data-lucide="github" class="w-10 h-10"></i>
-                </a>
-                <a href="https://www.youtube.com/ShadowAmitendu" target="_blank" class="hover:text-[#e74c3c] transition transform hover:-translate-y-2">
-                    <i data-lucide="youtube" class="w-10 h-10"></i>
-                </a>
-            </div>
-            <p class="text-[10px] uppercase font-bold tracking-[0.4em] opacity-30">
-                &copy; 2026 Amitendu Bikash Dhusiya | Built with Tailwind
-            </p>
         </div>
-    </footer>
 
-    <script>
-        // 1. Mobile Menu Auto-Close Logic
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        <!-- Timeline Labels -->
+        <div class="flex justify-between mt-4 font-black uppercase text-[10px] sm:text-xs tracking-tighter">
+            <span>Aug 1, 2023 <br><span class="opacity-40 font-bold">The Beginning</span></span>
+            <span class="text-center">Current Phase: <br><span class="text-[#e74c3c]">Semester 6 & Labs</span></span>
+            <span class="text-right">July 30, 2027 <br><span class="opacity-40 font-bold">Graduation</span></span>
+        </div>
+    </div>
+</section>
 
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+<!--
+    Skills Section
+    4-column grid displaying technical skills by category:
+    1. Languages (Java, Python, JavaScript, PHP/C)
+    2. Frontend (Angular, React, Tailwind, HTML/CSS)
+    3. Backend (Node.js, .NET, MySQL, MS SQL)
+    4. Cloud/OS (AWS, Unix, Git, OpenBSD)
+-->
+<section class="bg-[#2c3e50] py-16 px-6 text-white scroll-mt-20" id="skills">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl font-black mb-12 uppercase text-center sm:text-left border-b-4 border-[#3498db] pb-4 inline-block">
+            Technical Arsenal</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-8">
+            <!-- Languages Column -->
+            <div>
+                <h3 class="text-[#3498db] font-black uppercase mb-4 tracking-tighter text-xl italic">Languages</h3>
+                <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
+                    <li>• Java</li>
+                    <li>• Python</li>
+                    <li>• JavaScript</li>
+                    <li>• PHP / C</li>
+                </ul>
+            </div>
+            <!-- Frontend Column -->
+            <div>
+                <h3 class="text-[#2ecc71] font-black uppercase mb-4 tracking-tighter text-xl italic">Frontend</h3>
+                <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
+                    <li>• Angular</li>
+                    <li>• React</li>
+                    <li>• Tailwind CSS</li>
+                    <li>• HTML5/CSS3</li>
+                </ul>
+            </div>
+            <!-- Backend Column -->
+            <div>
+                <h3 class="text-[#e74c3c] font-black uppercase mb-4 tracking-tighter text-xl italic">Backend</h3>
+                <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
+                    <li>• Node.js</li>
+                    <li>• .NET Core</li>
+                    <li>• MySQL</li>
+                    <li>• MS SQL Server</li>
+                </ul>
+            </div>
+            <!-- Cloud/OS Column -->
+            <div>
+                <h3 class="text-[#f1c40f] font-black uppercase mb-4 tracking-tighter text-xl italic">Cloud/OS</h3>
+                <ul class="font-bold space-y-3 opacity-90 text-sm sm:text-base">
+                    <li>• AWS (Lambda, S3)</li>
+                    <li>• Unix/Shell</li>
+                    <li>• Git/GitHub</li>
+                    <li>• OpenBSD</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--
+    Projects Section
+    Dynamically populated from GitHub API
+    - Fetches 12 most recent repositories
+    - Filters out forked repos and those without descriptions
+    - Shows loading spinner while fetching
+    - Displays project cards in responsive grid
+-->
+<section class="py-16 px-6 lg:py-24 max-w-7xl mx-auto scroll-mt-20" id="projects">
+    <div class="mb-12">
+        <h2 class="text-3xl sm:text-4xl font-black uppercase">GitHub Projects</h2>
+        <div class="h-2 w-24 bg-[#3498db] mt-2"></div>
+    </div>
+
+    <!-- Loading State (visible until API response received) -->
+    <div class="flex flex-col items-center py-20" id="loading">
+        <div class="loader rounded-full border-4 border-gray-200 h-12 w-12 mb-4"></div>
+        <p class="font-bold uppercase text-xs tracking-widest opacity-50">Syncing API...</p>
+    </div>
+
+    <!-- Project Grid (populated by JavaScript) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 hidden" id="project-grid">
+    </div>
+</section>
+
+<!--
+    Footer / Contact Section
+    Social media links and copyright notice
+    Links to GitHub and YouTube profiles
+-->
+<footer class="bg-[#2c3e50] text-white py-20 px-6 text-center" id="contact">
+    <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl sm:text-4xl font-black mb-10 uppercase tracking-tighter italic">Connect</h2>
+        <!-- Social Media Icons -->
+        <div class="flex justify-center gap-12 mb-12">
+            <a class="hover:text-[#3498db] transition transform hover:-translate-y-2"
+               href="https://github.com/ShadowAmitendu"
+               target="_blank">
+                <i class="w-10 h-10" data-lucide="github"></i>
+            </a>
+            <a class="hover:text-[#e74c3c] transition transform hover:-translate-y-2"
+               href="https://www.youtube.com/ShadowAmitendu"
+               target="_blank">
+                <i class="w-10 h-10" data-lucide="youtube"></i>
+            </a>
+        </div>
+        <!-- Copyright -->
+        <p class="text-[10px] uppercase font-bold tracking-[0.4em] opacity-30">
+            &copy; 2026 Amitendu Bikash Dhusiya | Built with Tailwind
+        </p>
+    </div>
+</footer>
+
+<script>
+    /**
+     * Mobile Menu Toggle
+     * Handles opening/closing the mobile navigation menu
+     * Auto-closes when any menu link is clicked
+     */
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    // Toggle menu visibility on button click
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close menu when any link is clicked
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
         });
+    });
 
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
+    /**
+     * GitHub API Integration
+     * Fetches public repositories from GitHub and displays them as project cards
+     * Filters: Non-forked repos with descriptions only
+     * API Endpoint: GET /users/{username}/repos
+     */
+    const username = 'ShadowAmitendu';
+    const projectGrid = document.getElementById('project-grid');
+    const loading = document.getElementById('loading');
 
-        // 2. GitHub API Integration
-        const username = 'ShadowAmitendu';
-        const projectGrid = document.getElementById('project-grid');
-        const loading = document.getElementById('loading');
+    async function fetchRepos() {
+        try {
+            // Fetch 12 most recently updated repos
+            const res = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
+            const data = await res.json();
 
-        async function fetchRepos() {
-            try {
-                // Fetch 12 most recent public repos
-                const res = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=12`);
-                const data = await res.json();
-                
-                loading.classList.add('hidden');
-                projectGrid.classList.remove('hidden');
+            // Hide loader and show grid
+            loading.classList.add('hidden');
+            projectGrid.classList.remove('hidden');
 
-                data.forEach(repo => {
-                    // Filter: Only show non-forked repos that have descriptions
-                    if(!repo.fork && repo.description) {
-                        const card = document.createElement('div');
-                        card.className = "bg-white border-4 border-[#2c3e50] flat-border p-6 flex flex-col transition-all hover:bg-[#f9f9f9]";
-                        card.innerHTML = `
+            // Generate project cards
+            data.forEach(repo => {
+                // Only display non-forked repos with descriptions
+                if (!repo.fork && repo.description) {
+                    const card = document.createElement('div');
+                    card.className = "bg-white border-4 border-[#2c3e50] flat-border p-6 flex flex-col transition-all hover:bg-[#f9f9f9]";
+                    card.innerHTML = `
                             <div class="flex justify-between items-start mb-6">
                                 <div class="bg-[#2c3e50] text-white p-2 flex items-center justify-center">
                                     <i data-lucide="folder" class="w-5 h-5"></i>
@@ -215,18 +389,52 @@
                                 </a>
                             </div>
                         `;
-                        projectGrid.appendChild(card);
-                    }
-                });
-                // Re-initialize icons for dynamic content
-                lucide.createIcons();
-            } catch (e) {
-                loading.innerHTML = "<p class='font-black text-red-500 uppercase'>API Connection Error</p>";
-            }
+                    projectGrid.appendChild(card);
+                }
+            });
+            // Re-initialize Lucide icons for dynamically added content
+            lucide.createIcons();
+        } catch (e) {
+            // Display error message if API fails
+            loading.innerHTML = "<p class='font-black text-red-500 uppercase'>API Connection Error</p>";
         }
+    }
 
-        fetchRepos();
-        lucide.createIcons();
-    </script>
+    // Initialize repo fetching
+    fetchRepos();
+    lucide.createIcons();
+
+    /**
+     * Academic Progress Calculator
+     * Calculates degree completion percentage based on:
+     * - Start: Aug 1, 2023
+     * - End: July 30, 2027
+     * Updates progress bar and percentage text dynamically
+     */
+    function updateDegreeProgress() {
+        const startDate = new Date('2023-08-01');
+        const endDate = new Date('2027-07-30');
+        const today = new Date();
+
+        const totalDuration = endDate - startDate;
+        const timeElapsed = today - startDate;
+
+        // Calculate percentage (clamped between 0-100)
+        let percentage = Math.floor((timeElapsed / totalDuration) * 100);
+        percentage = Math.min(Math.max(percentage, 0), 100);
+
+        // Update DOM elements
+        const fill = document.getElementById('progress-fill');
+        const text = document.getElementById('progress-percent');
+
+        if (fill && text) {
+            fill.style.width = percentage + '%';
+            text.innerText = percentage + '%';
+        }
+    }
+
+    // Execute on page load
+    updateDegreeProgress();
+</script>
 </body>
 </html>
