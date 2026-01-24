@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         /**
          * Global Styles
@@ -61,7 +62,18 @@
     </style>
 </head>
 <body class="antialiased">
+<div class="fixed inset-0 z-[100] bg-[#2c3e50] flex items-center justify-center overflow-hidden" id="loader">
+    <div class="shutter absolute inset-0 bg-[#3498db] translate-y-full"></div>
 
+    <div class="relative z-10 text-center">
+        <div class="text-white font-[900] text-5xl md:text-8xl tracking-tighter uppercase opacity-0" id="loader-text">
+            SHADOW<span class="text-[#3498db]">AMITENDU</span>
+        </div>
+        <div class="mt-4 w-48 h-1 bg-white/20 mx-auto overflow-hidden" id="loader-bar-container">
+            <div class="w-0 h-full bg-[#3498db]" id="loader-bar"></div>
+        </div>
+    </div>
+</div>
 <!--
     Navigation Bar
     Sticky navigation with responsive menu
@@ -435,6 +447,49 @@
 
     // Execute on page load
     updateDegreeProgress();
+
+    // Create GSAP Timeline
+    const tl = gsap.timeline();
+
+    window.addEventListener('load', () => {
+        // 1. Fade in the text
+        tl.to("#loader-text", {
+            opacity: 1,
+            y: -20,
+            duration: 0.8,
+            ease: "power4.out"
+        })
+            // 2. Animate the mini loading bar
+            .to("#loader-bar", {
+                width: "100%",
+                duration: 1.2,
+                ease: "expo.inOut"
+            }, "-=0.4")
+            // 3. Scale up text slightly before exit
+            .to("#loader-text", {
+                scale: 1.1,
+                duration: 0.5,
+                ease: "power2.in"
+            })
+            // 4. Slide up the shutter and the whole loader
+            .to(".shutter", {
+                y: 0,
+                duration: 0.6,
+                ease: "power4.inOut"
+            })
+            .to("#loader", {
+                yPercent: -100,
+                duration: 0.8,
+                ease: "expo.inOut"
+            }, "-=0.2")
+            // 5. Hero Section Reveal (Optional extra pop)
+            .from("header h1", {
+                y: 100,
+                opacity: 0,
+                duration: 1,
+                ease: "power4.out"
+            }, "-=0.3");
+    });
 </script>
 </body>
 </html>
